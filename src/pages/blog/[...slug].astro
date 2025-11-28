@@ -1,4 +1,6 @@
 ---
+description: "Page description - provide valuable summary of content for search engines and users."
+title: "Page Title - Update Me"
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
@@ -15,7 +17,17 @@ type Props = CollectionEntry<'blog'>;
 const post = Astro.props;
 const { Content } = await render(post);
 ---
-
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<blogpost {...post.data}="">
+<content></content>
+</blogpost>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title",
+  "description": "Article description",
+  "author": {
+    "@type": "Person",
+    "name": "Author Name"
+  },
+  "datePublished": "2025-01-01"
+}</script>
