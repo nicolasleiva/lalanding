@@ -1,4 +1,6 @@
 ---
+description: "Page description - provide valuable summary of content for search engines and users."
+title: "Page Title - Update Me"
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,12 +12,12 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
+<!DOCTYPE html>
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
+<head>
+<basehead description="{SITE_DESCRIPTION}" title="{SITE_TITLE}"></basehead>
+<style>
 			main {
 				width: 960px;
 			}
@@ -84,28 +86,55 @@ const posts = (await getCollection('blog')).sort(
 				}
 			}
 		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
+</head>
+<body><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title",
+  "description": "Article description",
+  "author": {
+    "@type": "Person",
+    "name": "Author Name"
+  },
+  "datePublished": "2025-01-01"
+}</script><h1>Main Heading - Update Me</h1>
+<header></header>
+<main>
+<section>
+<ul>
 					{
-						posts.map((post) => (
+						posts.map((post) =&gt; (
 							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
+<a href="{`/blog/${post.id}/`}">
+<img alt="" height="{360}" src="{post.data.heroImage}" width="{720}"/>
+<h4 class="title">{post.data.title}</h4>
+<p class="date">
+<formatteddate date="{post.data.pubDate}"></formatteddate>
+</p>
+</a>
+</li>
 						))
 					}
 				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+</section>
+</main>
+<footer></footer>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Question 1?</h3>
+<p>Answer with detailed explanation...</p>
+</div>
+<div class="faq-item">
+<h3>Question 2?</h3>
+<p>Answer with helpful information...</p>
+</div>
+</section>
+
+<div class="author">
+<h4>About the Author</h4>
+<p><strong>Author Name</strong> - Bio and credentials here.</p>
+</div>
+</body>
 </html>
